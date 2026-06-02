@@ -1,3 +1,5 @@
+import Button from '../components/Button'
+import HeroExperience from '../components/HeroModels/HeroExperience'
 import { words } from '../constants'
 const Hero = () => {
     return (
@@ -5,8 +7,6 @@ const Hero = () => {
             <div className="absolute top-0 left-0 z-10">
                 <img src="../images/bg.png" alt="Hero Background" />
             </div>
-
-
             <div className="hero-layout">
                 {/* LEFT HERO */}
                 <header className="flex flex-col justify-center md:w-full w-screen md:px-20 px-5">
@@ -26,10 +26,17 @@ const Hero = () => {
                             </h1>
                             <h1>into RealProjects</h1>
                             <h1>that deliver Value</h1>
-                            <p className="text-white-50 md:text-xl relative z-10 pointer-events-none ">Hi, I am Bipin Gurung, passiniot Fullstack developer based in Nepal</p>
                         </div>
+                        <p className="text-white-50 md:text-xl relative z-10 pointer-events-none ">Hi, I am Bipin Gurung, passiniot Fullstack developer based in Nepal</p>
+                        <Button className="md:w-80 md:h-16 w-60 h-12" id="button" text="See My Work" />
                     </div>
                 </header>
+                {/* RIGHT HERO-3D Pic */}
+                <figure>
+                    <div className="hero-3d-layout">
+                        <HeroExperience />
+                    </div>
+                </figure>
             </div>
         </section>
     )

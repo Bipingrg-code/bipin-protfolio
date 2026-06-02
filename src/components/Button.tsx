@@ -1,0 +1,17 @@
+
+import type { ButtonPropType } from '../constants';
+const Button = ({ text, className }: ButtonPropType) => {
+    return (
+        <a className={`${className ?? ""} cta-wrapper`}>
+            <div className="cta-button group">
+                <div className="bg-circle" />
+                <p className="text">{text}</p>
+                <div className="arrow-wrapper">
+                    <img src="../images/arrow-down.svg" alt="Arrow Right" className="arrow" />
+                </div>
+            </div>
+        </a>
+    )
+}
+
+export default Button

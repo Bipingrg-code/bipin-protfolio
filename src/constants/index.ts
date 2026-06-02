@@ -4,3 +4,9 @@ export const words = [
     { text: "Concepts", imgPath: "/images/concepts.svg" },
     { text: "Designs", imgPath: "/images/designs.svg" },
 ];
+
+export interface ButtonPropType {
+    id?: string;
+    text: string;
+    className: string;
+}
