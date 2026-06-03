@@ -4,7 +4,7 @@ import { useMediaQuery } from "react-responsive"
 
 const HeroExperience = () => {
   const isTableMode = useMediaQuery({ query: '(max-width: 1024px)' })
-  const isMobileMode = useMediaQuery({ query: '(max-width: 786px)' })
+  // const isMobileMode = useMediaQuery({ query: '(max-width: 786px)' })
   return (
     <Canvas camera={{ position: [0, 0, 15], fov: 45 }}>
       <ambientLight intensity={0.5} color="#1a1a40" />
