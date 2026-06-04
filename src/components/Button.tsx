@@ -1,8 +1,20 @@
 
 import type { ButtonPropType } from '../constants';
-const Button = ({ text, className }: ButtonPropType) => {
+const Button = ({ text, className, id}: ButtonPropType) => {
     return (
-        <a className={`${className ?? ""} cta-wrapper`}>
+        <a 
+            onClick={(e) => {
+                e.preventDefault();
+                const target = document.getElementById('counter');
+
+                if(target && id){
+                    const offset = window.innerHeight * 0.15; // Adjust this value as needed
+                    const top = target.getBoundingClientRect().top + window.scrollY - offset;
+                    window.scrollTo({ top, behavior: 'smooth' });
+                }
+            }}
+        
+            className={`${className ?? ""} cta-wrapper`}>
             <div className="cta-button group">
                 <div className="bg-circle" />
                 <p className="text">{text}</p>
