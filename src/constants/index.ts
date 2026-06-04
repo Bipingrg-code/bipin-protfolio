@@ -10,3 +10,16 @@ export interface ButtonPropType {
     text: string;
     className: string;
 }
+
+type CounterItemsType = {
+    value: number;
+    suffix: string;
+    label: string;
+}
+
+export const counterItems:CounterItemsType[] = [
+    {value:15,suffix:'+',label:'Projects Completed'},
+    {value:10,suffix:'+',label:'Happy Clients'},
+    {value:5,suffix:'+',label:'Years of Experience'},
+    {value:20,suffix:'+',label:'Completed Projects'},
+]
