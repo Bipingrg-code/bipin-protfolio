@@ -36,7 +36,7 @@ const ShowcaseSection = () => {
     }, [sectionRef, project1Ref, project2Ref, project3Ref])
 
     return (
-        <section ref={sectionRef} id="work" className="app-showcase">
+        <section ref={sectionRef} id="works" className="app-showcase">
             <div className="showcaselayout">
                 {/* LEFT SHOWCASE */}
                 <div className="first-project-wrapper" ref={project1Ref}>
