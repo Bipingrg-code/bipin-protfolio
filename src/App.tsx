@@ -5,6 +5,7 @@ import ExperienceSection from './sections/ExperienceSection'
 import FeaturesCards from './sections/FeaturesCards'
 import Hero from './sections/Hero'
 import ShowcaseSection from './sections/ShowcaseSection'
+import TechSkills from './sections/TechSkills'
 
 export default function App() {
   return (
@@ -15,6 +16,7 @@ export default function App() {
       <LogoSection />
       <FeaturesCards />
       <ExperienceSection />
+      <TechSkills />
     </main>
   )
 }
