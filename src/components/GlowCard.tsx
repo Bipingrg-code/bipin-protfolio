@@ -1,8 +1,8 @@
 import { useRef } from "react"
 import { type ExperienceCardType } from "../constants"
-
+import { type testimonialsTypes } from "../constants"
 type GlowCardPropTypes = {
-    card: ExperienceCardType
+    card: ExperienceCardType | testimonialsTypes
     children: React.ReactNode
     index: number
 }
@@ -33,7 +33,7 @@ const GlowCard = ({ card, children, index }: GlowCardPropTypes) => {
         <div
             ref={(el) => { cardRef.current[index] = el }}   // ✅ wrapped in block body
             onMouseMove={handleMouseMove(index)}
-            className="card card-border timeline-card rounded-xl p-10"
+            className="card card-border timeline-card rounded-xl p-10 mb-5 break-inside-avoid-column"
         >
             <div className="glow" />
             <div className="flex items-center gap-1 mb-5">
