@@ -1,37 +1,42 @@
-import { useState } from "react"
+import { useRef, useState } from "react"
 import TitleHeader from "../components/TitleHeader"
 import ContactExperience from "../components/Models/ContectModes/ComputerExperience"
+import toast from "react-hot-toast"
+
+import emailjs from "@emailjs/browser"
 
 const Contact = () => {
+    const formRef = useRef<HTMLFormElement>(null)
     const [form, setForm] = useState({
         name: "",
         email: "",
         message: ""
     })
     const [loading, setLoading] = useState(false)
+
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         const { name, value } = e.target
         setForm((prev) => ({ ...prev, [name]: value }))
     }
+
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
+
+        if (!formRef.current) return
         setLoading(true)
-
+        const loadingToast = toast.loading("Sending message...")
         try {
-            // example: send to an API endpoint
-            // const res = await fetch("/api/contact", {
-            //     method: "POST",
-            //     headers: { "Content-Type": "application/json" },
-            //     body: JSON.stringify(form)
-            // })
-
-            // if (!res.ok) throw new Error("Failed to send message")
-
-            // setForm({ name: "", email: "", message: "" })
-            alert("Message sent successfully!")
+            await emailjs.sendForm(
+                import.meta.env.VITE_APP_EMAILJS_SERVICE_ID,
+                import.meta.env.VITE_APP_EMAILJS_TEMPLATE_ID,
+                formRef.current,
+                import.meta.env.VITE_APP_EMAILJS_PUBLIC_ID
+            )
+            toast.success("Message sent successfully!", { id: loadingToast, icon: '👏', })
+            setForm({ name: "", email: "", message: "" })
         } catch (err) {
             console.error(err)
-            alert("Something went wrong. Please try again.")
+            toast.error("Something went wrong. Please try again.", { id: loadingToast, icon: '⛔️', })
         } finally {
             setLoading(false)
         }
@@ -43,7 +48,7 @@ const Contact = () => {
                 <div className="grid-12-cols mt-16">
                     <div className="xl:col-span-5">
                         <div className="flex-center card-border rounded-xl p-10">
-                            <form onSubmit={handleSubmit} className="w-full flex flex-col gap-7">
+                            <form ref={formRef} onSubmit={handleSubmit} className="w-full flex flex-col gap-7">
                                 <div>
                                     <label htmlFor="name">Your Name</label>
                                     <input
